@@ -33,30 +33,44 @@ document.addEventListener("DOMContentLoaded", function () {
     function initializeGame() {
         totalCards = cohesionDeck.length + couplingDeck.length; 
         learnedSet.clear(); 
+        percentLearnedDisplay.textContent = "Learned: 0%"; 
+    
+        shuffleDeck(cohesionDeck);
+        shuffleDeck(couplingDeck);
+    
         loadDeck("Cohesion", cohesionDeck);
     }
+    
 
     function loadDeck(name, selectedDeck) {
-        deck = [...selectedDeck];
+        deck = [...selectedDeck]; 
+        shuffleDeck(deck); 
         donePile = [];
         currentCardIndex = 0;
         deckTitle.textContent = name;
-
+    
         startOverBtn.style.display = "none";
         nextDeckBtn.style.display = "none";
         remindMeBtn.style.display = "inline-block";
         gotItBtn.style.display = "inline-block";
-
+    
         showCard();
     }
+    
 
     function updateStats() {
-        let remainingCards = deck.length + (couplingDeck.includes(deck[0]) ? cohesionDeck.length : 0);
-        let percentLearned = (learnedSet.size - 1 / totalCards) * 100; 
-
+        let remainingCards = deck.length + (deckTitle.textContent === "Cohesion" ? couplingDeck.length : 0);
+        let percentLearned = (learnedSet.size / totalCards) * 100; 
+    
+        
+        if (learnedSet.size === totalCards) {
+            percentLearned = 100;
+        }
+    
         cardsLeftDisplay.textContent = `Cards Left: ${remainingCards}`;
         percentLearnedDisplay.textContent = `Learned: ${Math.round(percentLearned)}%`;
     }
+    
 
     function showCard() {
         if (deck.length === 0) {
@@ -83,6 +97,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    function shuffleDeck(deck) {
+        for (let i = deck.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [deck[i], deck[j]] = [deck[j], deck[i]]; 
+        }
+    }
+    
     flashcard.addEventListener("click", function () {
         flashcard.classList.toggle("flipped");
     });
@@ -98,9 +119,12 @@ document.addEventListener("DOMContentLoaded", function () {
         let learnedCard = deck.splice(currentCardIndex, 1)[0];
         donePile.push(learnedCard);
         learnedSet.add(learnedCard.id); 
+    
         flashcard.classList.remove("flipped");
+        updateStats(); 
         showCard();
     });
+    
 
     nextDeckBtn.addEventListener("click", function () {
         loadDeck("Coupling", couplingDeck);
