@@ -109,7 +109,7 @@ nav {
 
 /* Default Button Styles */
 button {
-    background-color: #007BFF;
+    background-color: #33577d;
     color: white;
     border: none;
     padding: 12px 18px;
@@ -128,12 +128,12 @@ button:hover {
 /* Specific Buttons */
 #remindMe { background-color: #FF9800; }
 #gotIt { background-color: #4CAF50; }
-#startOver, #nextDeck { background-color: #007BFF; display: none; }
+#startOver, #nextDeck { background-color: #244567; display: none; }
 
 /* Centered Buttons */
 .centered-button {
     display: none;
-    background-color: #007BFF;
+    background-color: #163a60;
     color: white;
     font-size: 16px;
     padding: 12px 24px;
