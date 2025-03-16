@@ -1,41 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SDD Flashcards</title>
+    <title>SDD Study App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 id="deckTitle">Cohesion</h1>
 
-    <div class="status-bar">
-        <div id="cardsLeft">Cards Left: 7</div>
-        <div id="percentLearned">Learned: 0%</div>
-    </div>
+    <!-- <header>
+        <nav> -->
+            <!-- Mode Selection -->
+            <!-- <button id="flashcardMode">Flashcard Mode</button> -->
+            <!-- <button id="quizMode">Quiz Mode</button> -->
+    
+            <!-- Deck Selection (Only for Flashcard Mode) -->
 
-    <div class="flashcard-container">
-        <div class="flashcard" id="flashcard">
-            <div class="front"></div>
-            <div class="back"></div>
+            <header>
+                <nav>
+                    <button class="deck-toggle" data-deck="cohesion">Module Cohesion</button>
+                    <button class="deck-toggle" data-deck="coupling">Module Coupling</button>
+                    <button class="deck-toggle" data-deck="unitTesting">Unit Testing</button>
+                    <button class="deck-toggle" data-deck="cppTesting">C++ Testing</button>
+                    <button class="deck-toggle" data-deck="jsWebApiTesting">JS Web API Testing</button>
+                    <button class="deck-toggle" data-deck="secureProgramming">Secure Programming</button>
+                    <button class="deck-toggle" data-deck="tdd">TDD</button>
+                </nav>
+            </header>
+<!--             
+            <label for="deckSelector">Select a Deck:</label>
+            <select id="deckSelector">
+                <option value="cohesion">Module Cohesion</option>
+                <option value="coupling">Module Coupling</option>
+                <option value="tdd">Test-Driven Development</option>
+                <option value="unitTesting">Unit Testing in Python</option>
+                <option value="cppTesting">C++ and Physics Engine Testing</option>
+                <option value="jsWebApiTesting">JavaScript and Web API Testing</option>
+                <option value="secureProgramming">Assertions and Secure Programming</option>
+            </select>
+            
+           
+        </nav>
+    </header> -->
+    
+
+    <!-- Flashcard Mode -->
+    <div id="flashcardContainer">
+        <h2 id="deckTitle">Flashcards</h2>
+        <div class="status-bar">
+            <span id="cardsLeft">Cards Left: 0</span>
+            <span id="percentLearned">Learned: 0%</span>
         </div>
+        
+        <div id="flashcard" class="flashcard"></div>
+        <div class="button-container">
+            <button id="remindMe">Remind Me</button>
+            <button id="gotIt">Got It!</button>
+        </div>
+        <button id="nextDeck" class="centered-button">Next Deck</button>
+     
     </div>
 
-    <div class="button-container">
-        <button id="remindMe">💡 Remind Me</button>
-        <button id="gotIt">✅ Got It!</button>
-        <button id="nextDeck" style="display: none;">➡️ Start Coupling</button>
-        <button id="startQuiz" style="display: none;">📝 Start Quiz</button>
-        <button id="startOver" style="display: none;">🔄 Start Over</button>
-    </div>
-
-    <div class="quiz-container" style="display: none;">
-        <h2>Type the 7 Module Cohesion Types:</h2>
-        <div id="quizInputs"></div>
-        <button id="submitQuiz">✅ Submit Answers</button>
-        <button id="reviewDeck" style="display: none;">🔄 Review</button>
-    </div>
+    <!-- Quiz Mode
+    <div id="quizContainer" style="display: none;">
+        <h2>Quiz Mode</h2>
+        <p id="quizQuestion"></p>
+        <textarea id="quizAnswer" maxlength="600" placeholder="Type your answer here..."></textarea>
+        <button id="revealAnswer">Reveal Answer</button>
+        <p id="quizCorrectAnswer" style="display: none;"></p>
+        <button id="nextQuiz">Next Question</button>
+    </div> -->
 
     <script type="module" src="main.js"></script>
 </body>
-</html>

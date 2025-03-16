@@ -1,3 +1,11 @@
+/* Reset margins, padding, and ensure consistent box sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -7,168 +15,122 @@ body {
     padding: 0;
 }
 
-/* Status bar */
+/* Navigation bar */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 10px;
+    background-color: #333;
+}
+
+/* Status bar (Centered) */
 .status-bar {
     display: flex;
-    justify-content: space-between;
-    width: 300px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
     margin: 20px auto;
     font-size: 18px;
     font-weight: bold;
-}
-
-/* Flashcard container */
-.flashcard-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
-}
-
-/* Flashcard flip effect */
-.flashcard {
-    width: 250px;
-    height: 180px;
-    perspective: 1000px;
-    position: relative;
-    cursor: pointer;
-}
-
-.card-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-}
-
-.flipped .card-inner {
-    transform: rotateY(180deg);
-}
-
-.front, .back {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 10px;
-    padding: 10px;
-    color: white;
-}
-
-.back {
-    transform: rotateY(180deg);
-}
-
-/* Button container */
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px auto;
-    width: 350px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-#remindMe { background-color: #FF9800; color: white; }
-#gotIt { background-color: #4CAF50; color: white; }
-#startOver, #nextDeck { background-color: #007BFF; color: white; display: none; }
-
-button:hover { opacity: 0.8; }
-
-
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #2c2c2c; /* Dark grey background */
-    color: white; /* Default text color */
-    margin: 0;
-    padding: 0;
-}
-
-/* Status bar */
-.status-bar {
-    display: flex;
-    justify-content: space-between;
-    width: 300px;
-    margin: 20px auto;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-/* Flashcard container */
-.flashcard-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
-}
-
-/* Flashcard flip effect */
-.flashcard {
-    width: 250px;
-    height: 180px;
-    perspective: 1000px;
-    position: relative;
-    cursor: pointer;
-}
-
-.card-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-}
-
-.flipped .card-inner {
-    transform: rotateY(180deg);
-}
-
-.front, .back {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 10px;
-    padding: 10px;
-    color: white;
-}
-
-.back {
-    transform: rotateY(180deg);
-}
-
-/* Button container */
-.button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
     gap: 20px;
 }
 
-/* Center "Next Deck" and "Start Over" */
+/* Main Flashcard Container */
+#flashcardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    width: 100vw; /* Full viewport width */
+    height: 90vh; /* Almost full screen height */
+    position: relative;
+}
+
+/* Flashcard Box */
+.flashcard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 280px; /* Consistent card width */
+    height: 200px; /* Consistent card height */
+    perspective: 1000px;
+    position: relative;
+    margin: 0 auto; /* Forces horizontal centering */
+}
+
+/* Flashcard Inner */
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+/* Flipping Effect */
+.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.front, .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+/* Button Container (Centered) */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;  
+    margin: 20px auto;
+    gap: 15px;
+}
+
+/* Default Button Styles */
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Button Hover Effect */
+button:hover {
+    opacity: 0.8;
+}
+
+/* Specific Buttons */
+#remindMe { background-color: #FF9800; }
+#gotIt { background-color: #4CAF50; }
+#startOver, #nextDeck { background-color: #007BFF; display: none; }
+
+/* Centered Buttons */
 .centered-button {
     display: none;
     background-color: #007BFF;
@@ -183,7 +145,7 @@ body {
     margin-top: 20px;
 }
 
-/* Ensure button is centered */
+/* Centered Container for Buttons */
 .centered-container {
     display: flex;
     justify-content: center;
@@ -191,6 +153,69 @@ body {
     margin-top: 20px;
 }
 
-button:hover {
-    opacity: 0.8;
+/* Quiz Container */
+#quizContainer {
+    text-align: center;
+    display: none; /* Initially hidden */
+}
+
+/* Quiz Input */
+#quizAnswer {
+    width: 90%;
+    max-width: 500px;
+    height: 120px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Quiz Answer Display */
+#quizCorrectAnswer {
+    font-weight: bold;
+    color: #28a745;
+    margin-top: 10px;
+}
+
+/* 📌 Deck Buttons */
+.deck-button {
+    background-color: #37474F; /* Dark blue-gray */
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s;
+    width: 220px; /* Ensure uniform size */
+    text-align: center;
+}
+
+/* Hover Effect */
+.deck-button:hover {
+    background-color: #455A64;
+}
+
+/* Button Click Effect */
+.deck-button:active {
+    transform: scale(0.95);
+}
+
+/* 📌 Responsive Design */
+@media screen and (max-width: 600px) {
+    .deck-button {
+        width: 100%;
+        max-width: 240px;
+    }
+
+    .status-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
